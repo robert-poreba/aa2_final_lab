@@ -1,0 +1,12 @@
+clouds:
+  51e2-project:
+    auth:
+      auth_url: "https://api.orange.sc01.infra.opentlc.com:13000//v3"
+      username: "51e2-user"
+      project_name: "51e2-project"
+      project_id: "9ccc17bd97264d48b5d6c2fa3deab9f4"
+      user_domain_name: "Default"
+      password: "dt2AEgUXxXjW"
+    region_name: "regionOne"
+    interface: "public"
+    identity_api_version: 3

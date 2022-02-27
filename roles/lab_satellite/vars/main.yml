@@ -1,0 +1,7 @@
+---
+# vars file for roles/lab_satellite
+guid: "{{ lookup('ENV','GUID') }}"
+home: "{{ lookup('ENV','HOME') }}"
+internal_domain: "internal"
+satellite_activationkey: gpte-labs-rhel8
+satellite_org: prod

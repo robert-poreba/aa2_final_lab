@@ -1,0 +1,46 @@
+---
+# vars file for lab_openstack
+guid: "{{ lookup('ENV','GUID') }}"
+home: "{{ lookup('ENV','HOME') }}"
+internal_domain: "internal"
+instances:
+  - name: frontend1
+    keypair: "{{ guid }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ guid }}-HostSG"
+    internal_network: "{{ guid }}-dev-network"
+    metadata:
+      AnsibleGroup: osp_instances
+      deployment_name: dev
+
+  - name: app1
+    keypair: "{{ guid }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ guid }}-HostSG"
+    internal_network: "{{ guid }}-dev-network"
+    metadata:
+      AnsibleGroup: osp_instances
+      deployment_name: dev
+
+  - name: app2
+    keypair: "{{ guid }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ guid }}-HostSG"
+    internal_network: "{{ guid }}-dev-network"
+    metadata:
+      AnsibleGroup: osp_instances
+      deployment_name: dev
+
+  - name: appdb1
+    keypair: "{{ guid }}-keypair"
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: "{{ guid }}-HostSG"
+    internal_network: "{{ guid }}-dev-network"
+    metadata:
+      AnsibleGroup: osp_instances
+      deployment_name: dev
+

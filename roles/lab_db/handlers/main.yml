@@ -1,0 +1,6 @@
+---
+# handlers file for lab_db
+    - name: restart_postgres
+      service:
+        name: "{{ postgres_service }}"
+        state: restarted

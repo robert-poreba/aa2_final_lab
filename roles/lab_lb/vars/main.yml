@@ -1,0 +1,6 @@
+---
+# vars file for lab_lb
+    ansible_managed: "Ansible generated"
+    load_balancer_packages:
+      - haproxy
+

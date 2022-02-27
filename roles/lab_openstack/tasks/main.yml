@@ -1,0 +1,34 @@
+---
+# tasks file for lab_openstack
+- name: setup
+  setup:
+  delegate_to: 127.0.0.1
+
+- name: set ansible control host IP fact
+  set_fact:
+    ansible_control_host_address: "{{ hostvars[inventory_hostname]['ansible_eth0']['ipv4']['address'] }}"
+  delegate_to: 127.0.0.1
+
+- name: Create Instance
+  openstack.cloud.server:
+    cloud: "{{ guid }}-project"
+    name: "{{ instance.name }}"
+    image: "{{ instance.image }}"
+    key_name: "{{ instance.keypair }}"
+    flavor: "{{ instance.flavor }}"
+    security_groups: "{{ instance.security_group }}"
+    delete_fip: yes
+    wait: no
+    nics:
+      - net-name: "{{ instance.internal_network }}"
+    meta: "AnsibleGroup={{instance.metadata.AnsibleGroup}},deployment_name={{instance.metadata.deployment_name}}"
+    userdata: |
+      #!/bin/bash
+      profile=`nmcli -f NAME  con show --active | grep -v NAME | head -n 1 | sed 's/ *$//g'`
+      nmcli con mod "$profile" ipv4.ignore-auto-dns yes
+      nmcli con mod "$profile" ipv4.dns {{ ansible_control_host_address }}
+      nmcli con down "$profile"
+      nmcli con up "$profile"
+  loop: "{{ instances }}"
+  loop_control:
+    loop_var: instance
