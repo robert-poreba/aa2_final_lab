@@ -1,7 +1,9 @@
 ---
 # vars file for lab_openstack
-guid: "{{ lookup('ENV','GUID') }}"
-home: "{{ lookup('ENV','HOME') }}"
+guid: 51e2
+home: /home/devops`
+#guid: "{{ lookup('ENV','GUID') }}"
+#home: "{{ lookup('ENV','HOME') }}"
 internal_domain: "internal"
 instances:
   - name: frontend1
