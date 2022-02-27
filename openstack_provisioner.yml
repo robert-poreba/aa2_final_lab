@@ -2,7 +2,16 @@
 - name: Test
   hosts: localhost
   become: true
+#  connection: ssh
   gather_facts: false
 
-  roles:
-    - lab_openstack
+  tasks:
+    - raw: hostname
+      register: test
+
+    - debug: 
+      var: test
+
+
+#  roles:
+#    - lab_openstack
