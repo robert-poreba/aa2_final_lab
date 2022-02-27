@@ -1,7 +1,7 @@
 ---
 - name: Test
-  hosts: localhost
-  become: true
+#  hosts: localhost
+#  become: true
 #  connection: ssh
   gather_facts: false
 
