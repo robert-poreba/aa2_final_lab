@@ -2,7 +2,7 @@
 # tasks file for lab_openstack
 - name: setup
   setup:
-  connection: local
+#  connection: local
 #  delegate_to: 127.0.0.1
 
 - name: set ansible control host IP fact
