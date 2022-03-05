@@ -4,6 +4,9 @@
   become: false
   gather_facts: true
   tasks:
+    - name: Display IP
+      debug:
+        msg: "{{ ansible_facts['eth0']['ipv4']['address'] }}"
     - name: Check webserver for correct response
       uri:
         url: "http://{{ ansible_facts['eth0']['ipv4']['address'] }}/ping"
