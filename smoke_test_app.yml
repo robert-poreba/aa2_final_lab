@@ -9,7 +9,7 @@
         msg: "{{ ansible_facts['eth0']['ipv4']['address'] }}"
     - name: Check webserver for correct response
       uri:
-        url: "http://{{ ansible_facts['eth0']['ipv4']['address'] }}/ping"
+        url: "http://{{ ansible_facts['eth0']['ipv4']['address'] }}:8080/ping"
         return_content: yes
       until: '"alive" in result.content'
       retries: 10
