@@ -1,0 +1,8 @@
+---
+- name: Deploy, configure, and populate Postgres 12
+  hosts: all
+  become: true
+  gather_facts: false
+
+  roles:
+    - lab_db
