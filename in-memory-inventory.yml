@@ -30,3 +30,24 @@
 
   tasks:
     - debug: var=groups
+
+- name: Play to configure Satellite
+  hosts: osp_instances
+  become: yes
+  vars:
+    satellite_activationkey: gpte-labs-rhel8
+    satellite_org: prod
+  tasks:
+    - name: install katello-ca-consumer package
+      yum:
+        name: http://satellite.example.com/pub/katello-ca-consumer-latest.noarch.rpm
+        state: present
+        disable_gpg_check: true
+
+    - name: register system and attach subs
+      redhat_subscription:
+        state: present
+        activationkey: "{{ satellite_activationkey }}"
+        org_id: "{{ satellite_org }}"
+        auto_attach: true
+
