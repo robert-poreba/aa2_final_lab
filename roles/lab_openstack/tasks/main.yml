@@ -2,13 +2,10 @@
 # tasks file for lab_openstack
 - name: setup
   setup:
-#  connection: local
-#  delegate_to: 127.0.0.1
 
 - name: set ansible control host IP fact
   set_fact:
     ansible_control_host_address: "{{ hostvars[inventory_hostname]['ansible_eth0']['ipv4']['address'] }}"
-#  delegate_to: 127.0.0.1
 
 - name: display the IP for DNS server
   debug:
