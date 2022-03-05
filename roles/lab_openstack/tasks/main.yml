@@ -28,8 +28,8 @@
       #!/bin/bash
       profile=`nmcli -f NAME  con show --active | grep -v NAME | head -n 1 | sed 's/ *$//g'`
       nmcli con mod "$profile" ipv4.ignore-auto-dns yes
-      nmcli con mod "$profile" ipv4.dns {{ ansible_control_host_address }}
-      nmcli con mod "$profile" +ipv4.dns "150.239.16.12"
+      nmcli con mod "$profile" ipv4.dns "150.239.16.12"
+      nmcli con mod "$profile" +ipv4.dns {{ ansible_control_host_address }}
       nmcli con down "$profile"
       nmcli con up "$profile"
   loop: "{{ instances }}"
